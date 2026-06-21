@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpsqawb51kifk"]
+
+[ext_resource type="Texture2D" uid="uid://dn6tkrma2e8qy" path="res://sky.png" id="1_kwhg4"]
+[ext_resource type="Texture2D" uid="uid://eigxrvif404h" path="res://4_BG_mts.png" id="2_hy12d"]
+[ext_resource type="Texture2D" uid="uid://qon4qljaaaa1" path="res://2_foreground_mts.png" id="3_m5fgl"]
+[ext_resource type="Texture2D" uid="uid://bagajqw3njf1o" path="res://fog.png" id="4_4srxt"]
+[ext_resource type="Texture2D" uid="uid://8s5gb8xe47hg" path="res://snow.png" id="5_s063p"]
+[ext_resource type="Texture2D" uid="uid://dudsemytv5saf" path="res://snow_2.png" id="6_fe61w"]
+
+[node name="ParallaxBackground" type="Node2D"]
+
+[node name="SkyLayer" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1472, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyLayer"]
+position = Vector2(456, -16)
+scale = Vector2(4, 4)
+texture = ExtResource("1_kwhg4")
+
+[node name="FarMtsLayer" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.05)
+repeat_size = Vector2(1472, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="FarMtsLayer"]
+position = Vector2(304, 0)
+scale = Vector2(4.304348, 4.0769234)
+texture = ExtResource("2_hy12d")
+
+[node name="MidMtsLayer" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.25, 0.1)
+repeat_size = Vector2(1300, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="MidMtsLayer"]
+position = Vector2(360, -8)
+scale = Vector2(3.6304348, 4)
+texture = ExtResource("3_m5fgl")
+
+[node name="FogLayer" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.35, 0.15)
+repeat_size = Vector2(1000, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="FogLayer"]
+position = Vector2(264, 224)
+scale = Vector2(3.826087, 2.4615386)
+texture = ExtResource("4_4srxt")
+
+[node name="snow1" type="Parallax2D" parent="."]
+scroll_offset = Vector2(224, 40)
+repeat_size = Vector2(1462, 832)
+autoscroll = Vector2(-40, 200)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="snow1"]
+position = Vector2(1742, 24)
+scale = Vector2(1.978142, 1.9807693)
+texture = ExtResource("5_s063p")
+
+[node name="snow2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.44, 1.2)
+scroll_offset = Vector2(256, -8)
+repeat_size = Vector2(1462, 832)
+autoscroll = Vector2(-40, 200)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="snow2"]
+position = Vector2(191.99998, 20.000023)
+scale = Vector2(1.7826087, 2.0192308)
+texture = ExtResource("6_fe61w")

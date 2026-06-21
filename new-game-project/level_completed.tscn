@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu3mrc5okqmyh"]
+
+[ext_resource type="Script" uid="uid://h0lribvvk3df" path="res://level_completed.gd" id="1_kb4ov"]
+[ext_resource type="FontFile" uid="uid://cwfmvu23xpyv4" path="res://Gothica.ttf" id="2_g43eu"]
+
+[node name="Level Completed" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_kb4ov")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_g43eu")
+theme_override_font_sizes/font_size = 20
+text = "LEVEL COMPLETED!"

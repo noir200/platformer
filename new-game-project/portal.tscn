@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://u6xpy11mrque"]
+
+[ext_resource type="Script" uid="uid://ffxxwdh3frvm" path="res://portal.gd" id="1_ef3v5"]
+[ext_resource type="Texture2D" uid="uid://h1a7rmgog4kq" path="res://portal_png-removebg-preview.png" id="2_grrij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r214"]
+atlas = ExtResource("2_grrij")
+region = Rect2(0, 0, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pgh4"]
+atlas = ExtResource("2_grrij")
+region = Rect2(166, 0, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtc1a"]
+atlas = ExtResource("2_grrij")
+region = Rect2(332, 0, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8rct"]
+atlas = ExtResource("2_grrij")
+region = Rect2(0, 166, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8kna"]
+atlas = ExtResource("2_grrij")
+region = Rect2(166, 166, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a7dg"]
+atlas = ExtResource("2_grrij")
+region = Rect2(332, 166, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl8kn"]
+atlas = ExtResource("2_grrij")
+region = Rect2(0, 332, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x30s"]
+atlas = ExtResource("2_grrij")
+region = Rect2(166, 332, 166, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byaht"]
+atlas = ExtResource("2_grrij")
+region = Rect2(332, 332, 166, 166)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dd4p5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r214")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pgh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtc1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8rct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8kna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a7dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl8kn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x30s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byaht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Portal" type="Area2D"]
+script = ExtResource("1_ef3v5")
+next_scene_path = "res://level_2.tscn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(1.1746988, 1.2710843)
+sprite_frames = SubResource("SpriteFrames_dd4p5")
+frame = 4
+frame_progress = 0.62000996
