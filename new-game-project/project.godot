@@ -24,10 +24,6 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
-
 [input]
 
 move_left={
@@ -64,7 +60,7 @@ common/physics_interpolation=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.28423995, 0.2866045, 0.30003557, 1)
+environment/defaults/default_clear_color=Color(0.14137226, 0.17722538, 0.18144783, 1)
 2d/physics_interpolation=false
 2d/max_physics_steps_per_frame=8
 2d/size/resizable=true
