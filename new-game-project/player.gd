@@ -43,6 +43,7 @@ func _physics_process(delta):
 
 ##-------------------------------------------------------------------------------------------------------##
 
+
 func handle_wall_jump() -> bool:
 	if not is_on_wall_only(): return false
 	
@@ -77,6 +78,10 @@ func handle_jump():
 			jump_count += 1
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= 0.5
+	if is_on_floor() and velocity.y > 200:
+		camera_2d.offset = Vector2(0, 6)
+		await get_tree().create_timer(0.05).timeout
+		camera_2d.offset = Vector2.ZERO
 
 func apply_friction(direction, delta):
 	if direction == 0 and is_on_floor():
@@ -113,9 +118,17 @@ func update_animation(direction):
 			animated_sprite_2d.play("jump")
 
 func _on_hazard_detector_area_entered(_area):
+	animated_sprite_2d.scale = Vector2(4, 4) 
+	animated_sprite_2d.play("death")
+	set_physics_process(false)
+	$CollisionShape2D.set_deferred("disabled", true)
+	await animated_sprite_2d.animation_finished
 	call_deferred("_do_respawn")
+	set_physics_process(true)
+	$CollisionShape2D.set_deferred("disabled", false)
 
 func _do_respawn():
+	animated_sprite_2d.scale = Vector2(1, 1) 
 	global_position = starting_position
 	velocity = Vector2.ZERO
 	reset_physics_interpolation()

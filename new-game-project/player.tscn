@@ -1,8 +1,9 @@
-[gd_scene load_steps=54 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=62 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Resource" uid="uid://c004h2fgf0q2g" path="res://DefaultMovementData.tres" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c3y5jxgve5l5w" path="res://2BlueWizardIdle/Chara - BlueIdle00000.png" id="3_fddr8"]
+[ext_resource type="Texture2D" uid="uid://dbxmhhat163es" path="res://Blood Splat.png" id="3_oybyf"]
 [ext_resource type="Texture2D" uid="uid://pv702onfh6t" path="res://2BlueWizardIdle/Chara - BlueIdle00001.png" id="4_oybyf"]
 [ext_resource type="Texture2D" uid="uid://c0lu8da8tik0u" path="res://2BlueWizardIdle/Chara - BlueIdle00002.png" id="5_ajfva"]
 [ext_resource type="Texture2D" uid="uid://grreyv0kf6bd" path="res://2BlueWizardIdle/Chara - BlueIdle00003.png" id="6_5ef02"]
@@ -51,8 +52,62 @@
 [ext_resource type="Texture2D" uid="uid://div1w1vsiqg5r" path="res://2BlueWizardWalk/Chara_BlueWalk00018.png" id="49_6o2m3"]
 [ext_resource type="Texture2D" uid="uid://pmghayujwpxl" path="res://2BlueWizardWalk/Chara_BlueWalk00019.png" id="50_2hmo1"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oybyf"]
+atlas = ExtResource("3_oybyf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajfva"]
+atlas = ExtResource("3_oybyf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ef02"]
+atlas = ExtResource("3_oybyf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfmca"]
+atlas = ExtResource("3_oybyf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76oay"]
+atlas = ExtResource("3_oybyf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4uyv"]
+atlas = ExtResource("3_oybyf")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw8ou"]
+atlas = ExtResource("3_oybyf")
+region = Rect2(384, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_bwjto"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oybyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajfva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ef02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfmca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76oay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4uyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw8ou")
+}],
+"loop": false,
+"name": &"death",
+"speed": 120.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_fddr8")
@@ -233,7 +288,8 @@ texture_filter = 1
 position = Vector2(0.9999991, -1.9073486e-06)
 scale = Vector2(0.12109376, 0.14062504)
 sprite_frames = SubResource("SpriteFrames_bwjto")
-animation = &"jump"
+animation = &"death"
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_i3pqv")
