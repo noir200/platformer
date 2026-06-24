@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcv5m0amqeoe0"]
+
+[ext_resource type="PackedScene" uid="uid://drlywfj1wsjmr" path="res://nope.tscn" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://chp670j35o4h7" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://d2up3d8ga0r4e" path="res://nope.gd" id="3_fu7sn"]
+[ext_resource type="FontFile" uid="uid://doujrpxbaolk0" path="res://Gardener.ttf" id="4_glbon"]
+[ext_resource type="FontFile" uid="uid://4dtc0spbxsyo" path="res://Playa.ttf" id="5_glbon"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7vrkn")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_06t4h")]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+script = ExtResource("3_fu7sn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = -8.0
+offset_right = 269.0
+offset_bottom = 195.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.97590375, 0.6885038, 0.2784798, 1)
+theme_override_colors/font_shadow_color = Color(0.13333334, 0.26666668, 0.13333334, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_glbon")
+theme_override_font_sizes/font_size = 20
+text = "JUNGLE PLATFORMER "
+horizontal_alignment = 1
+
+[node name="start" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6311404, 0.7717181, 0.12542781, 1)
+theme_override_fonts/font = ExtResource("5_glbon")
+theme_override_font_sizes/font_size = 13
+text = "play"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6313726, 0.77254903, 0.1254902, 1)
+theme_override_fonts/font = ExtResource("5_glbon")
+theme_override_font_sizes/font_size = 13
+text = "quit
+"

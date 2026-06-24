@@ -19,7 +19,7 @@ func _physics_process(delta):
 	var was_on_floor = is_on_floor()
 	var direction = Input.get_axis("move_left", "move_right")
 	apply_gravity(delta)
-	
+
 	if not handle_wall_jump():
 		handle_jump()
 	handle_acceleration(direction, delta)
@@ -27,10 +27,6 @@ func _physics_process(delta):
 	apply_air_resistance(direction, delta)
 	
 	move_and_slide()
-	
-	# REMOVED: camera_2d.global_position = global_position
-	# Camera2D is a child of player, it follows automatically — manually setting
-	# its global_position every frame was causing jitter
 
 	update_animation(direction)
 	if is_on_floor():
@@ -46,7 +42,6 @@ func _physics_process(delta):
 
 func handle_wall_jump() -> bool:
 	if not is_on_wall_only(): return false
-	
 	var wall_normal = get_wall_normal()
 	if Input.is_action_just_pressed("jump"):
 		velocity.x = wall_normal.x * movement_data.speed * 0.85
@@ -117,20 +112,24 @@ func update_animation(direction):
 		if animated_sprite_2d.animation != "jump":
 			animated_sprite_2d.play("jump")
 
-func _on_hazard_detector_area_entered(_area):
-	animated_sprite_2d.scale = Vector2(4, 4) 
-	animated_sprite_2d.play("death")
-	set_physics_process(false)
-	$CollisionShape2D.set_deferred("disabled", true)
-	await animated_sprite_2d.animation_finished
-	call_deferred("_do_respawn")
-	set_physics_process(true)
-	$CollisionShape2D.set_deferred("disabled", false)
+var is_dying = false
+
+func _on_hazard_detector_area_entered(area):
+	if is_dying:
+		return
+	is_dying = true
+	_do_respawn()
 
 func _do_respawn():
-	animated_sprite_2d.scale = Vector2(1, 1) 
-	global_position = starting_position
 	velocity = Vector2.ZERO
-	reset_physics_interpolation()
-	if camera_2d:
-		camera_2d.reset_smoothing()
+	set_physics_process(false)
+	$AnimatedSprite2D.scale = Vector2(4, 4)
+	$AnimatedSprite2D.play("death")
+	await $AnimatedSprite2D.animation_finished
+	position = starting_position
+	velocity = Vector2.ZERO
+	$AnimatedSprite2D.scale = Vector2(0.121, 0.141)
+	$AnimatedSprite2D.play("idle")
+	camera_2d.reset_smoothing()
+	set_physics_process(true)
+	is_dying = false
