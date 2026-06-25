@@ -55,7 +55,7 @@ func handle_wall_jump() -> bool:
 
 func apply_gravity(delta):
 	if not is_on_floor():
-		var grav_scale = movement_data.gravity_scale  # renamed from scale
+		var grav_scale = movement_data.gravity_scale 
 		if velocity.y > 0:
 			grav_scale *= 1.4
 		velocity.y += gravity * grav_scale * delta
