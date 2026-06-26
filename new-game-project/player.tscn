@@ -275,7 +275,7 @@ height = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(16, 36)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 physics_interpolation_mode = 1
 collision_layer = 2
 floor_constant_speed = true

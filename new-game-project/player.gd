@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	reset_physics_interpolation()
+	camera_2d.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 
 ##-------------------------------------------------------------------------------------------##
 
@@ -19,6 +20,10 @@ func _physics_process(delta):
 	var was_on_floor = is_on_floor()
 	var direction = Input.get_axis("move_left", "move_right")
 	apply_gravity(delta)
+
+	if not was_on_floor and is_on_floor() and velocity.y > 0:
+		$DustParticles.restart()
+		$DustParticles.emitting = true
 
 	if not handle_wall_jump():
 		handle_jump()

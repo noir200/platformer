@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct5nff0im8i3x"]
+[gd_scene load_steps=14 format=3 uid="uid://ct5nff0im8i3x"]
 
 [ext_resource type="Script" uid="uid://d2eq6fjf1i6us" path="res://world.gd" id="1_l4ytd"]
 [ext_resource type="PackedScene" uid="uid://drlywfj1wsjmr" path="res://nope.tscn" id="2_6i6ra"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://u6xpy11mrque" path="res://portal.tscn" id="7_6i6ra"]
 [ext_resource type="PackedScene" uid="uid://dyfjarln2ph88" path="res://coin.tscn" id="7_cw7xh"]
 [ext_resource type="PackedScene" uid="uid://1g43dvmxf5hh" path="res://enemy.tscn" id="8_l0fcq"]
+[ext_resource type="PackedScene" uid="uid://dpr7gxf3d7mv" path="res://portal_transition.tscn" id="10_rij33"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndobf"]
 particle_flag_disable_z = true
@@ -23,6 +24,8 @@ scale_min = 2.0
 scale_max = 5.0
 
 [sub_resource type="Gradient" id="Gradient_bfhac"]
+offsets = PackedFloat32Array(0, 0.072649576, 0.6495727, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.115384616, 0.115384616, 0.115384616, 1, 0.6657214, 0.6657214, 0.6657214, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ndobf"]
 gradient = SubResource("Gradient_bfhac")
@@ -63,7 +66,7 @@ speed_scale = 0.3
 visibility_rect = Rect2(700, 300, 1400, 600)
 process_material = SubResource("ParticleProcessMaterial_ndobf")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("4_rij33")]
+[node name="Player" parent="." instance=ExtResource("4_rij33")]
 texture_filter = 1
 position = Vector2(-16, 88)
 
@@ -76,12 +79,14 @@ script = ExtResource("5_bfhac")
 position = Vector2(464, 232)
 
 [node name="Portal" parent="." instance=ExtResource("7_6i6ra")]
-position = Vector2(1112, -168)
+position = Vector2(1112, -160)
 scale = Vector2(0.5, 0.5)
 
 [node name="PointLight2D" type="PointLight2D" parent="Portal"]
+position = Vector2(0, 16.000008)
+scale = Vector2(1, 352)
 color = Color(0.08332651, 0.40490344, 0.5032109, 1)
-energy = 0.8
+energy = 8.0
 range_layer_min = 80
 range_layer_max = 80
 texture = SubResource("GradientTexture1D_ndobf")
@@ -110,3 +115,5 @@ position = Vector2(464, 144)
 
 [node name="Coin4" parent="." instance=ExtResource("7_cw7xh")]
 position = Vector2(952, -112)
+
+[node name="PortalTransition" parent="." instance=ExtResource("10_rij33")]
