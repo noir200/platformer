@@ -7,7 +7,7 @@ Game Theme :-
 
 Its based on a wizard that finds scrolls on levels to make portals to continue through levels.
 
-Game charecterisitcs :-
+Game charecteristics :-
 
 - Contains menu screen, two levels and a game completed screen.
 - Contains enemies, spikes, jump pad (windcushion), parallax background and multiple effects to make game look better.
