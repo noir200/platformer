@@ -13,17 +13,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	reset_physics_interpolation()
 	camera_2d.process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
-
 ##-------------------------------------------------------------------------------------------##
 
 func _physics_process(delta):
 	var was_on_floor = is_on_floor()
+
 	var direction = Input.get_axis("move_left", "move_right")
 	apply_gravity(delta)
-
-	if not was_on_floor and is_on_floor() and velocity.y > 0:
-		$DustParticles.restart()
-		$DustParticles.emitting = true
 
 	if not handle_wall_jump():
 		handle_jump()
@@ -31,7 +27,18 @@ func _physics_process(delta):
 	apply_friction(direction, delta)
 	apply_air_resistance(direction, delta)
 	
+	var pre_slide_velocity_y = velocity.y
 	move_and_slide()
+
+	if not was_on_floor and is_on_floor() and pre_slide_velocity_y > 100:
+		var base_scale = Vector2(0.121, 0.141)
+		var squish_scale = Vector2(base_scale.x * 1.3, base_scale.y * 0.7)
+		var tween = create_tween()
+		tween.tween_property(animated_sprite_2d, "scale", squish_scale, 0.05)
+		tween.tween_property(animated_sprite_2d, "scale", base_scale, 0.1)
+		var tween2 = create_tween()
+		tween2.tween_property(camera_2d, "offset", Vector2(0, 6), 0.05)
+		tween2.tween_property(camera_2d, "offset", Vector2(0, 0), 0.1)
 
 	update_animation(direction)
 	if is_on_floor():
@@ -44,7 +51,6 @@ func _physics_process(delta):
 
 ##-------------------------------------------------------------------------------------------------------##
 
-
 func handle_wall_jump() -> bool:
 	if not is_on_wall_only(): return false
 	var wall_normal = get_wall_normal()
@@ -55,7 +61,6 @@ func handle_wall_jump() -> bool:
 		just_wall_jumped = true
 		animated_sprite_2d.play("jump")
 		return true
-		
 	return false
 
 func apply_gravity(delta):
@@ -78,10 +83,6 @@ func handle_jump():
 			jump_count += 1
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= 0.5
-	if is_on_floor() and velocity.y > 200:
-		camera_2d.offset = Vector2(0, 6)
-		await get_tree().create_timer(0.05).timeout
-		camera_2d.offset = Vector2.ZERO
 
 func apply_friction(direction, delta):
 	if direction == 0 and is_on_floor():
@@ -119,7 +120,7 @@ func update_animation(direction):
 
 var is_dying = false
 
-func _on_hazard_detector_area_entered(area):
+func _on_hazard_detector_area_entered(_area):
 	if is_dying:
 		return
 	is_dying = true

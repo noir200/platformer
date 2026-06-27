@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=63 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Resource" uid="uid://c004h2fgf0q2g" path="res://DefaultMovementData.tres" id="2_i3pqv"]
@@ -275,6 +275,17 @@ height = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(16, 36)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oybyf"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 150, 0)
+scale_min = 0.5
+scale_max = 1.5
+color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 physics_interpolation_mode = 1
 collision_layer = 2
@@ -310,5 +321,12 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_i3pqv")
+
+[node name="DustParticles" type="GPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_oybyf")
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]

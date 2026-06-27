@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://plxnjdhqn2rd"]
+
+[ext_resource type="Script" uid="uid://b6gfghuckivs4" path="res://victory_scene.gd" id="1_irsex"]
+[ext_resource type="PackedScene" uid="uid://dpsqawb51kifk" path="res://parallax_background.tscn" id="2_o6ndt"]
+[ext_resource type="FontFile" uid="uid://bem2qia653crn" path="res://RushdaFunky-mGRv.otf" id="3_o6ndt"]
+[ext_resource type="FontFile" uid="uid://4dtc0spbxsyo" path="res://Playa.ttf" id="4_c37wx"]
+
+[sub_resource type="Theme" id="Theme_c37wx"]
+
+[sub_resource type="Theme" id="Theme_hanys"]
+
+[node name="Victory Scene" type="Node2D"]
+script = ExtResource("1_irsex")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_o6ndt")]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 88.0
+offset_top = 48.0
+offset_right = 241.0
+offset_bottom = 80.0
+theme = SubResource("Theme_c37wx")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.61662793, 0.36379927, 0.06628093, 1)
+theme_override_fonts/font = ExtResource("3_o6ndt")
+theme_override_font_sizes/font_size = 22
+text = "Game Completed!"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 120.0
+offset_top = 88.0
+offset_right = 197.0
+offset_bottom = 108.0
+theme = SubResource("Theme_hanys")
+theme_override_colors/font_color = Color(0.99525446, 0.9134547, 0.77743465, 1)
+theme_override_colors/font_disabled_color = Color(1, 0.84313726, 0.7058824, 1)
+theme_override_fonts/font = ExtResource("4_c37wx")
+theme_override_font_sizes/font_size = 12
+text = "Play Again?"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

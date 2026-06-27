@@ -28,4 +28,4 @@ func reset_portal_status():
 func _on_body_entered(body):
 	if body.is_in_group("player") and not transitioning:
 		transitioning = true
-		get_tree().change_scene_to_file("res://level_two.tscn")
+		get_tree().change_scene_to_file("res://victory_scene.tscn")

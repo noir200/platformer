@@ -1,28 +1,22 @@
 extends CharacterBody2D
-
 @export var patrol_speed : float = 160.0
 @export var accel : float = 700.0
 @export var gravity_scale : float = 2.2
-
+@export var enemy_scale : Vector2 = Vector2(0.8, 0.8)
 var current_state : String = "patrol"
 var facing_right : bool = true
 var direction : int = 1
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var spawn_pos : Vector2 = Vector2.ZERO
-
 var idle_timer : float = 0.0
-
 @onready var sprite = $AnimatedSprite2D
 
 func _ready():
-
 	spawn_pos = global_position
 	current_state = "patrol"
 	direction = 1
 	facing_right = true
-
-	self.scale = Vector2(0.5, 0.5)
+	self.scale = enemy_scale
 
 func _physics_process(delta):
 

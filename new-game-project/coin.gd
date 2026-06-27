@@ -1,7 +1,7 @@
 extends Area2D
 
 # ==============================================================================
-# COIN LIFETIME CONTROLLER (CRASH-PROOF POOLING)
+# COIN LIFETIME CONTROLLER 
 # ==============================================================================
 
 var is_collected : bool = false
@@ -23,7 +23,6 @@ func execute_coin_collection():
 	is_collected = true
 	visible = false
 	
-	# CRASH-PROOF: Safely search for the shape node before disabling
 	var coin_shape = get_node_or_null("CollisionShape2D")
 	if coin_shape != null:
 		coin_shape.set_deferred("disabled", true)
@@ -41,7 +40,6 @@ func respawn_coin():
 		is_collected = false
 		visible = true
 		
-		# CRASH-PROOF: Safely search for the shape node before enabling
 		var coin_shape = get_node_or_null("CollisionShape2D")
 		if coin_shape != null:
 			coin_shape.set_deferred("disabled", false)
