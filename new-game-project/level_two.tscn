@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ck3u8geuka6xj"]
+[gd_scene load_steps=16 format=3 uid="uid://ck3u8geuka6xj"]
 
 [ext_resource type="Script" uid="uid://d2eq6fjf1i6us" path="res://world.gd" id="1_e4814"]
 [ext_resource type="PackedScene" uid="uid://drlywfj1wsjmr" path="res://nope.tscn" id="2_ook2w"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bwa6j84r0bl0l" path="res://spikes.tscn" id="8_orixp"]
 [ext_resource type="Script" uid="uid://dlo41f0qngmih" path="res://portal_final.gd" id="8_q0uq4"]
 [ext_resource type="PackedScene" uid="uid://dyfjarln2ph88" path="res://coin.tscn" id="9_f8h4k"]
+[ext_resource type="FontFile" uid="uid://13krxjr70ktr" path="res://rushda-font/RushdaFunky-mGRv.otf" id="12_c6k8r"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndobf"]
 particle_flag_disable_z = true
@@ -128,3 +129,13 @@ position = Vector2(656, 56)
 
 [node name="Coin4" parent="." instance=ExtResource("9_f8h4k")]
 position = Vector2(248, 72)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 200.0
+offset_right = 189.0
+offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("12_c6k8r")
+theme_override_font_sizes/font_size = 14
+text = "This is a jumpad
+"

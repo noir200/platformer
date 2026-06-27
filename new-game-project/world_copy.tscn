@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct5nff0im8i3x"]
+[gd_scene load_steps=15 format=3 uid="uid://ct5nff0im8i3x"]
 
 [ext_resource type="Script" uid="uid://d2eq6fjf1i6us" path="res://world.gd" id="1_l4ytd"]
 [ext_resource type="PackedScene" uid="uid://drlywfj1wsjmr" path="res://nope.tscn" id="2_6i6ra"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://u6xpy11mrque" path="res://portal.tscn" id="7_6i6ra"]
 [ext_resource type="PackedScene" uid="uid://dyfjarln2ph88" path="res://coin.tscn" id="7_cw7xh"]
 [ext_resource type="PackedScene" uid="uid://1g43dvmxf5hh" path="res://enemy.tscn" id="8_l0fcq"]
+[ext_resource type="FontFile" uid="uid://doujrpxbaolk0" path="res://Gardener.ttf" id="10_bfhac"]
+[ext_resource type="FontFile" uid="uid://bem2qia653crn" path="res://RushdaFunky-mGRv.otf" id="11_ndobf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndobf"]
 particle_flag_disable_z = true
@@ -114,3 +116,39 @@ position = Vector2(464, 144)
 
 [node name="Coin4" parent="." instance=ExtResource("7_cw7xh")]
 position = Vector2(952, -112)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 176.0
+offset_top = 272.0
+offset_right = 298.0
+offset_bottom = 295.0
+theme_override_fonts/font = ExtResource("10_bfhac")
+text = "this is a spike"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 408.0
+offset_top = 160.0
+offset_right = 540.0
+offset_bottom = 209.0
+theme_override_fonts/font = ExtResource("11_ndobf")
+text = "this is the enemy
+"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 768.0
+offset_top = 224.0
+offset_right = 887.0
+offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("10_bfhac")
+theme_override_font_sizes/font_size = 12
+text = "walljump ahead
+"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = -160.0
+offset_top = 112.0
+offset_right = -88.0
+offset_bottom = 204.0
+theme_override_fonts/font = ExtResource("10_bfhac")
+text = "Collect scrolls to make portal"
+autowrap_mode = 3
